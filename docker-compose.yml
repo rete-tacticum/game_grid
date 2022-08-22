@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  gridgame:
+    build: .
+    image: skaben/gridgame:latest
+    volumes:
+      - ./app:/opt/app
+      - ./entrypoint.sh:/opt/entrypoint.sh
+      - node_volume:/opt/app/node_modules
+    environment:
+      - HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=True
+      - BROWSER=None
+    ports:
+      - 3000:3000
+
+volumes:
+  node_volume: {}

@@ -1,0 +1,15 @@
+.root {
+  font-size: 1.25em;
+  outline: none;
+  // pointer-events: none;
+}
+
+.cell {
+  &:nth-child(even) {
+    color: rgba(var(--color-white-val), .9);
+  }
+}
+
+.ignored {
+  pointer-events: none;
+}

@@ -1,0 +1,44 @@
+.root {
+  position: relative;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  &:hover, &:focus, &:active {
+    .background {
+      transition: all .75s;
+      color: var(--color-accent);
+      stroke-opacity: 1;
+      fill-opacity: .7;
+    }
+  
+    .title {
+      transition: color .75s;
+      color: var(--color-white);
+    }
+  }
+  
+}
+
+.title {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  padding-left: 1.5rem;
+  color: var(--color-grey);
+  user-select: none;
+}
+
+.background {
+  fill: rgba(var(--color-white-val), .15);
+  fill-opacity: .5;
+  stroke: currentColor;
+  stroke-width: .15;
+  stroke-opacity: .5;
+  color: var(--color-white);
+}
+
+@media only screen and (max-width: 468px) {
+  .title {
+    font-size: .875rem;
+  }
+}

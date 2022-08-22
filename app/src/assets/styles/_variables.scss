@@ -1,0 +1,22 @@
+:root {
+  --color-white-val: 255, 255, 255;
+  --color-white: rgb(var(--color-white-val));
+  --color-black-val: 0, 0, 0;
+  --color-black: rgb(var(--color-black-val));
+
+  --color-dark-val: 44, 44, 44;
+  --color-dark: rgb(var(--color-dark-val));
+  --color-accent-val: 158, 255, 136;
+  --color-accent: rgb(var(--color-accent-val));
+
+  --color-danger-val: 252, 65, 0;
+  --color-danger: rgb(var(--color-danger-val));
+  --color-main-val: 243, 255, 236;
+  --color-main: rgb(var(--color-main-val));
+  --color-grey-val: 160, 160, 160;
+  --color-grey: rgb(var(--color-grey-val));
+
+  --md-breakpoint: 768px;
+  --sm-breakpoint: 420px;
+  --min-size: 390px;
+}

@@ -1,0 +1,27 @@
+.animate-centered, .animate-centered ~ * {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes distort {
+  2%,62%{
+    transform: translate(2px,0) skew(2deg);
+  }
+  4%,60%{
+    transform: translate(-2px,2px) skew(0deg);
+  }
+  61%{
+    filter: hue-rotate(2deg) brightness(125%);
+    transform: translate(0px,-2px) skew(12deg) scaleY(.9) scaleX(.9);
+  }
+}
+
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

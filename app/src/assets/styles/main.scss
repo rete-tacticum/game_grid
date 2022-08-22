@@ -1,0 +1,48 @@
+@import './_reset.scss';
+@import './_variables.scss';
+@import '../fonts/fonts.scss';
+
+$mono-font: 'IBM Plex Mono', monospace;
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body, html {
+  background: var(--color-black);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  font-family: $mono-font;
+  color: var(--color-main);
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  color: var(--color-main);
+  text-decoration: none;
+  outline: none;
+}
+
+a:hover {
+  color: var(--color-white);
+}
+
+a::before {
+  content: "> "
+}
+
+a::after {
+  content: " <"
+}
+
+.animate-centered {
+  transform-box: fill-box;
+  transform-origin: center;
+}
