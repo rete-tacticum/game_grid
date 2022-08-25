@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-const getReturnValues = (countDown) => {
+const getReturnValues = (countDown: number): number[] => {
   const hours = Math.floor(
     (countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
   );
@@ -10,7 +10,7 @@ const getReturnValues = (countDown) => {
   return [hours, minutes, seconds];
 };
 
-const useCountdown = (target) => {
+const useCountdown = (target: number): number[] => {
   const [time, setTime] = useState(target - new Date().getTime());
 
   useEffect(() => {

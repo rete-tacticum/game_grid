@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import 'Assets/styles/main.scss';
+import '_assets/styles/main.scss';
 import { renderApp } from './App';
 
 const rootElement: HTMLElement | null = document.getElementById('root');

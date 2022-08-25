@@ -1,17 +1,20 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, createRef, useRef, Dispatch } from 'react';
+import { assertIsNode } from './misc';
 
-export default function useComponentVisible(initialState) {
+
+export const useComponentVisible = (initialState: boolean): [any, boolean, Dispatch<boolean>] => {
     const [isComponentVisible, setIsComponentVisible] = useState(initialState);
-    const ref = useRef(null);
+    const ref = useRef<HTMLElement>();
 
-    const handleHideDropdown = (event) => {
+    const handleHideDropdown = (event: KeyboardEvent) => {
         if (isComponentVisible && event.key === 'Escape') {
             setIsComponentVisible(false);
         }
     };
 
-    const handleClickOutside = (event) => {
-        if (isComponentVisible && ref.current && !ref.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+        assertIsNode(event.target);
+        if (isComponentVisible && ref.current && !ref?.current?.contains(event.target)) {
             setIsComponentVisible(false);
         }
     };

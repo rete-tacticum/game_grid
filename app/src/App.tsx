@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
+import { Root } from 'react-dom/client';
+import { Background } from './components/base/Background/Background';
+import { Layout } from './components/base/Layout/Layout';
+import { Hack } from './components/game/Hack/Hack';
 
-const App = () => {
+const App = (): ReactElement => {
   return (
-    <h1>it works</h1>
+    <Layout
+      // main={<Hack/>}
+      background={<Background/>}
+    />
   );
 }
 
-export const renderApp = (root: any) => {
+export const renderApp = (root: Root) => {
   return root.render(
     <React.StrictMode>
       <App />

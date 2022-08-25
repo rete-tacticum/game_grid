@@ -1,13 +1,11 @@
 import React from "react";
+import { IconProps } from "_interfaces/components/base/Icon";
 
-function Icon({ ...props }) {
-  const opacity = props.opacity || 0.1;
-  const colorMain = props.colorMain || "#7bdfab";
-  const colorSecond = props.colorSecond || "#0ad6be";
+function Icon({opacity = 0.1, colorMain = "#7bdfab", colorSecond = "#0ad6be", className}: IconProps) {
 
   return (
       <svg
-        className={props.className}
+        className={className}
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         width="614.4"

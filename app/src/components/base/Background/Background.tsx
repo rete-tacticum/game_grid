@@ -1,9 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
+import Bevel from '_components/base/Bevel/Icon';
+import { BackgroundProps } from '_interfaces/components/base/Background';
 import styles from './styles.module.scss';
-import Bevel from './Bevel.jsx';
 
-export const Background = ({className, textureUrl, textureOpacity=0.2}) => {
+
+export const Background = ({textureUrl, textureOpacity=0.2, className}: BackgroundProps) => {
 
   const texturedStyle = {backgroundImage: `url(${textureUrl})`, opacity: textureOpacity};
 
