@@ -34,7 +34,8 @@
       "_components/*": ["src/components/*"],
       "_assets/*": ["src/assets/*"],
       "_helpers/*": ["src/helpers/*"],
-      "_interfaces/*": ["src/typings/interfaces/*"]
+      "_interfaces/*": ["src/typings/interfaces/*"],
+      "_contexts/*": ["src/contexts/*"]
     },                                     
     /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */

@@ -1,40 +1,13 @@
 import React from 'react';
-import {useState, useMemo, useEffect} from 'react';
-import { randomDecimal } from 'Helpers/misc.js';
+import {useState } from 'react';
 import { HackField } from '../HackField/HackField';
 import { HackFieldCell } from '../HackFieldCell/HackFieldCell';
 import { nanoid } from 'nanoid';
-import { HackContextProvider, HackContext } from '../context';
+import { HackContextProvider } from '_contexts/hack';
 import { HackInfo } from '../HackInfo/HackInfo';
 import styles from './styles.module.scss';
 import { HackSolution } from '../HackSolution/HackSolution';
-
-
-const generateField = (height, width) => {
-  return [...Array(height)].map(() => [...Array(width)].map(() => randomDecimal(48, 72).toString(16)));
-}
-
-const getPrevious = (index, maxVal) => {
-  const result = randomDecimal(0, maxVal);
-  return result === index ? getPrevious(index, maxVal) : result;
-}
-
-const getBacktrace = (arr, pathLength) => {
-  // создает список координат ячеек, которые будут являться решением игры
-  const maxHeight = arr.length - 1;
-  const maxWidth = arr[0].length - 1;
-  const trace = [...Array(pathLength)].reduce((accum, _, idx) => {
-    const last = accum[0] || [randomDecimal(0, maxHeight), randomDecimal(0, maxWidth)];
-    const newVal = idx % 2 > 0 ? [getPrevious(last[0], maxHeight), last[1]] : [last[0], getPrevious(last[1], maxWidth)];
-    accum.unshift(newVal);
-    return accum;                                                           
-  }, []);
-
-  return trace.map(p => {
-    const [row, col] = [...p];
-    return arr[row][col];
-  });
-}
+import { generateField, getBacktrace } from '_contexts/hack/features';
 
 
 export const Hack = () => {
@@ -44,14 +17,19 @@ export const Hack = () => {
         traceStartLen = 3,
         traceCount = 3;
 
-  const [retrigger, setRetrigger] = useState(false);
+  const [retrigger, setRetrigger] = useState(nanoid());
   const field = generateField(height, width);
-  const mappedField = field.reduce((accum, arr, idxRow) => {
-    accum = [...accum, ...arr.map((hexValue, idxCol) => [idxRow, idxCol, hexValue])];
+  const mappedField = field.reduce((
+      accum: Array<[number, number, string]>,
+      arr: string[],
+      idxRow: number
+    ) => {
+    const mappedRow: Array<[number, number, string]> = arr.map((hexValue, idxCol) => [idxRow, idxCol, hexValue]);
+    accum = [...accum, ...mappedRow];
     return accum;
   }, []);
 
-  const generateTraces = (field, start, count) => {
+  const generateTraces = (field: Array<string[]>, start: number, count: number): Array<string[]> => {
     const fullTrace = getBacktrace(field, start + count - 1);
     const traceList = [fullTrace];
     if (count > 1) {
@@ -69,7 +47,7 @@ export const Hack = () => {
   }
 
   return (
-    <HackContextProvider addState={startState} key={retrigger}>
+    <HackContextProvider settings={startState} key={retrigger}>
       <div className={styles.root}>
         <HackSolution/>
         <div className={styles.field}>
@@ -87,7 +65,7 @@ export const Hack = () => {
         </div>
         <HackInfo/>
         {/* <button className={styles.start} onClick={handleStart}>START GAME</button> */}
-        <button className={styles.start} onClick={() => setRetrigger(!retrigger)}>RESET GAME</button>
+        <button className={styles.start} onClick={() => setRetrigger(nanoid())}>RESET GAME</button>
       </div>
     </HackContextProvider>
   )

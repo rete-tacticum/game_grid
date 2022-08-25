@@ -1,4 +1,6 @@
-const defaultState = {
+import { HackInitialState } from "_interfaces/contexts/Hack";
+
+const defaultState: HackInitialState = {
   'field': [],
   'tries': 0,
   'width': 0,
@@ -16,6 +18,8 @@ const defaultState = {
     'mode': 'vertical'
   },
   'solutions': [],
+  'solutionMinLen': 0,
+  'solutionsCount': 0
 }
 
 export { defaultState };

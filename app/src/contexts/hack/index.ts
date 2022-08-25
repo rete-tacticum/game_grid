@@ -1,20 +1,26 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { getInitialState } from './features.js';
+import { HackAdditionalStateProps, HackInitialState } from '_interfaces/contexts/Hack';
 import rootReducer from './reducers.js';
 import actions from './actions.js';
  
 const HackStateContext = React.createContext();
 const HackDispatchContext = React.createContext();
 
-const HackContextProvider = ({ settings, children }) => {
+interface HackContextProps {
+  settings: HackAdditionalStateProps;
+  children: React.ReactNode
+}
+
+const HackContextProvider = ({ settings, children }: HackContextProps) => {
   const initialState = getInitialState(settings);
   const [state, dispatch] = React.useReducer(rootReducer, initialState);
     
   useEffect(() => {
-    const cells = state.mode === 'horizontal'
-                             ? state.field.map((_, idx) => [idx, state.col])
-                             : [...Array(state.width)].map((_, idx) => [state.row, idx])
+    const cells: Array<string[]> = state.mode === 'horizontal'
+                                              ? state.field.map((_: string, idx: number) => [idx, state.col])
+                                              : [...Array(state.width)].map((_: string, idx: number) => [state.row, idx])
     dispatch({type: actions.HIGHLIGHT, payload: cells});
   }, [state.row, state.col, state.mode, state.locked])
 

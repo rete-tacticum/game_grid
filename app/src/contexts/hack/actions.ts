@@ -8,5 +8,5 @@ const actions = {
   RESET: 'RESET'
 }
 
-export {actions};
+export { actions };
 export default actions;

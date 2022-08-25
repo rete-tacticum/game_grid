@@ -1,19 +1,21 @@
-import { randomDecimal } from 'Helpers/misc.js';
+import { randomDecimal } from '_helpers/misc';
 import { defaultState } from './state';
+import { HackAdditionalStateProps, HackInitialState } from '_interfaces/contexts/Hack';
 
-const generateField = ({height, width}) => {
+
+const generateField = (height: number, width: number): Array<string[]> => {
   // создает двумерную матрицу заданных размеров из hex-чисел
-  const base = randomDecimal(32, 224);
-  const range = base > 128 ? [base, base + 32] : [base - 32, base];
+  const base: number = randomDecimal(32, 224);
+  const range: [number, number] = base > 128 ? [base, base + 32] : [base - 32, base];
   return [...Array(height)].map(() => [...Array(width)].map(() => randomDecimal(...range).toString(16)));
 }
 
-const getPrevious = (index, maxVal) => {
-  const result = randomDecimal(0, maxVal);
+const getPrevious = (index: number, maxVal: number): number => {
+  const result: number = randomDecimal(0, maxVal);
   return result === index ? getPrevious(index, maxVal) : result;
 }
 
-const getBacktrace = (arr, pathLength) => {
+const getBacktrace = (arr: Array<string[]>, pathLength: number): string[] => {
   // создает список координат ячеек, которые будут являться решением игры
   const maxHeight = arr.length - 1;
   const maxWidth = arr[0].length - 1;
@@ -24,16 +26,16 @@ const getBacktrace = (arr, pathLength) => {
     return accum;                                                           
   }, []);
 
-  return trace.map(p => {
-    const [row, col] = [...p];
+  return trace.map((path: number[]) => {
+    const [row, col] = [...path];
     return arr[row][col];
   });
 }
 
-const generateTraces = (field, start, count) => {
-  // генерирует решения поля на основании поля
+const generateTraceSolutions = (field: Array<string[]>, start: number, count: number): Array<string[]> => {
+  // создает список решений разной сложности
   const fullTrace = getBacktrace(field, start + count - 1);
-  const traceList = [fullTrace];
+  const traceList: Array<string[]> = [fullTrace];
   if (count > 1) {
     [...Array(count - 1)].forEach((_, idx) => traceList.unshift(fullTrace.slice(idx + 1)));
   }
@@ -41,8 +43,8 @@ const generateTraces = (field, start, count) => {
 }
 
 
-const getInitialState = ({ width, height, tries, solutionMinLen, solutionsCount }) => {
-  const field = generateField({width: width, height: height});
+const getInitialState = ({ width, height, tries, solutionMinLen, solutionsCount }: HackAdditionalStateProps): HackInitialState => {
+  const field = generateField(height, width);
   return {
     ...defaultState,
     'width': width,
@@ -51,9 +53,14 @@ const getInitialState = ({ width, height, tries, solutionMinLen, solutionsCount 
     'tries': tries,
     'solutionMinLen': solutionMinLen,
     'solutionsCount': solutionsCount,
-    'solutions': generateTraces(field, solutionMinLen, solutionsCount)
+    'solutions': generateTraceSolutions(field, solutionMinLen, solutionsCount)
   }
 }
 
 
-export { getInitialState }
+export { 
+  getInitialState,
+  getBacktrace,
+  generateField,
+  generateTraceSolutions
+}
