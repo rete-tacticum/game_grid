@@ -1,44 +1,54 @@
 import baseInitialState from './state';
 import { getInitialState } from './features';
 import actions from './actions';
+import { MoveMode, HackInitialState, HackFieldMoveState, HackFieldCellsState } from '_interfaces/contexts/Hack';
 
 
-const positionReducer = (state, action) => {
-  let newCol,
-      newRow,
-      newMode;
+const positionReducer = (state: HackInitialState, action: any): HackInitialState => {
+  let newMode: MoveMode;
+
+  const moveState: HackFieldMoveState = state.moves;
+  const cellState: HackFieldCellsState = state.cells;
 
   switch (action?.key) {
     case "a":
     case "ArrowLeft":
-      newCol = state.col > 0 ? state.col - 1 : state.col; 
-      return state.mode === 'horizontal' ? {...state, col: newCol} : state;
+      if (moveState.col > 0 && moveState.mode === 'horizontal') {
+        moveState.col--;
+        return {...state, moves: {...moveState}}
+      }
+      return state;
     case "d":
     case "ArrowRight":
-      newCol = state.col < state.width - 1 ? state.col + 1 : state.width - 1;
-      return state.mode === 'horizontal' ? {...state, col: newCol} : state;
+      if (moveState.col < state.width - 1 && moveState.mode === 'horizontal') {
+        moveState.col++;
+        return {...state, moves: {...moveState}};
+      }
     case "w":
     case "ArrowUp":
-      newRow = state.row > 0 ? state.row - 1 : state.row;
-      return state.mode === 'vertical' ? {...state, row: newRow} : state;
+      if (moveState.row > 0 && moveState.mode === 'vertical') {
+        moveState.row--;
+        return {...state, moves: {...moveState}};
+      }
     case "s":
     case "ArrowDown":
-      newRow = state.row < state.height - 1 ? state.row + 1 : state.height - 1;
-      return state.mode === 'vertical' ? {...state, row: newRow} : state;
+      if (moveState.row < state.height - 1 && moveState.mode === 'vertical') {
+        moveState.row++;
+        return {...state, moves: {...moveState}};
+      }
     case "Enter":
-      newMode = state.mode === 'horizontal' ? 'vertical' : 'horizontal';
+      newMode = moveState.mode === 'horizontal' ? 'vertical' : 'horizontal';
       return {
         ...state,
-        mode: newMode,
-        cells: {...state.cells, selected: [...state.cells.selected, [state.row, state.col]]},
-        step: state.step + 1,
+        moves: {...moveState, mode: newMode, step: moveState.step + 1},
+        cells: {...state.cells, selected: [...cellState.selected, [moveState.row, moveState.col]]}
       };
     default:
       return state;
   }
 }
 
-const rootReducer = (state = baseInitialState, action) => {
+const rootReducer = (state = baseInitialState, action: any): HackInitialState => {
   switch (action.type) {
     case actions.INIT:
       return {...state, ...action.payload};

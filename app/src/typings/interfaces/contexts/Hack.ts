@@ -1,13 +1,16 @@
+type MoveMode = 'horizontal' | 'vertical';
+
+
 interface HackFieldCellsState {
-  selected?: string[],
-  highlighted?: string[]
+  selected: [number, number][],
+  highlighted: string[]
 }
 
 interface HackFieldMoveState {
-  step: number,
-  col: number,
-  row: number,
-  mode: string
+  step: number;
+  col: number;
+  row: number;
+  mode: MoveMode;
 }
 
 interface HackInitialState {
@@ -24,15 +27,9 @@ interface HackInitialState {
   solutionsCount: number;
 }
 
-interface HackAdditionalStateProps {
-  width: number;
-  height: number;
-  tries: number;
-  solutionMinLen: number;
-  solutionsCount: number;
-}
-
 export type {
+  MoveMode,
   HackInitialState,
-  HackAdditionalStateProps,
+  HackFieldCellsState,
+  HackFieldMoveState
 }

@@ -1,20 +1,20 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { getInitialState } from './features.js';
-import { HackAdditionalStateProps, HackInitialState } from '_interfaces/contexts/Hack';
+import { HackInitialState } from '_interfaces/contexts/Hack';
 import rootReducer from './reducers.js';
 import actions from './actions.js';
  
-const HackStateContext = React.createContext();
-const HackDispatchContext = React.createContext();
+const HackStateContext = React.createContext({});
+const HackDispatchContext = React.createContext({});
 
 interface HackContextProps {
-  settings: HackAdditionalStateProps;
-  children: React.ReactNode
+  startWithState: Partial<HackInitialState>;
+  children?: React.ReactNode
 }
 
-const HackContextProvider = ({ settings, children }: HackContextProps) => {
-  const initialState = getInitialState(settings);
+const HackContextProvider = ({ startWithState, children }: HackContextProps): React.ReactElement => {
+  const initialState = getInitialState(startWithState);
   const [state, dispatch] = React.useReducer(rootReducer, initialState);
     
   useEffect(() => {
@@ -26,13 +26,13 @@ const HackContextProvider = ({ settings, children }: HackContextProps) => {
 
   useEffect(() => {
     if (state.cells.selected.length < 1) return;
-    const values = state.cells.selected.map(e => state.field[e[0]][e[1]]);
+    const values = state.cells.selected.map((e: string[]) => state.field[e[0]][e[1]]);
 
     if (state.step >= state.tries) {
       dispatch({type: actions.SUCCESS, payload: false})
     }
 
-    state.solutions.some(solution => {
+    state.solutions.some((solution: string[]) => {
       if (values.join('').includes(solution.join(''))) {
         dispatch({type: actions.SUCCESS, payload: true})
       }
@@ -47,12 +47,12 @@ const HackContextProvider = ({ settings, children }: HackContextProps) => {
   }, [state.success])
  
   return (
-    <HackStateContext.Provider value={state}>
-      <HackDispatchContext.Provider value={dispatch}>
+    <HackDispatchContext.Provider value={dispatch}>
+      <HackStateContext.Provider value={state}>
         { children }
-      </HackDispatchContext.Provider>
-    </HackStateContext.Provider>
+      </HackDispatchContext>
+    </HackStateContext>
   );
 };
 
-export { HackContextProvider, HackStateContext, HackDispatchContext };
+export { HackContextProvider };
