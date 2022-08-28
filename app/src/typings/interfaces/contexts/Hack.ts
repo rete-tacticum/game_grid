@@ -1,5 +1,11 @@
+import React from "react";
+
 type MoveMode = 'horizontal' | 'vertical';
 
+interface HackContextProviderProps {
+  initialState: HackInitialState,
+  children: React.ReactElement
+}
 
 interface HackFieldCellsState {
   selected: [number, number][],
@@ -14,7 +20,7 @@ interface HackFieldMoveState {
 }
 
 interface HackInitialState {
-  field?: Array<string[]>;
+  field: Array<string[]>;
   tries: number;
   width: number;
   height: number;
@@ -27,9 +33,17 @@ interface HackInitialState {
   solutionsCount: number;
 }
 
+type HackInitialPropsType = 'width' | 'height' | 'tries';
+interface HackInitialProps extends Pick<HackInitialState, HackInitialPropsType> {
+  solutionsCount: number;
+  solutionMinLen: number;
+};
+
 export type {
   MoveMode,
   HackInitialState,
+  HackInitialProps,
   HackFieldCellsState,
-  HackFieldMoveState
+  HackFieldMoveState,
+  HackContextProviderProps
 }
