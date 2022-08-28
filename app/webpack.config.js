@@ -59,6 +59,7 @@ module.exports = {
       _assets: path.resolve(__dirname, 'src/assets'),
       _helpers: path.resolve(__dirname, 'src/helpers'),
       _interfaces: path.resolve(__dirname, 'src/typings/interfaces'),
+      _contexts: path.resolve(__dirname, 'src/contexts')
     }
   },
   output: {

@@ -53,7 +53,10 @@ const rootReducer = (state = baseInitialState, action: any): HackInitialState =>
     case actions.INIT:
       return {...state, ...action.payload};
     case actions.LOCK:
-      return {...state, locked: action.lock};
+      if (!state.locked) {
+        return {...state, locked: action.payload};
+      }
+      return state;
     case actions.MOVE:
       return positionReducer(state, action);
     case actions.HIGHLIGHT:

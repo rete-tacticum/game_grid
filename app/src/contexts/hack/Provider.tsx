@@ -1,9 +1,9 @@
 import React, { useReducer } from 'react';
 import { useEffect } from 'react';
-import { HackStateContext, HackDispatchContext } from './index.js';
 import { HackFieldMoveState, HackContextProviderProps } from '_interfaces/contexts/Hack';
-import rootReducer from './reducers.js';
-import actions from './actions.js';
+import { HackStateContext, HackDispatchContext } from './index';
+import rootReducer from './reducers';
+import actions from './actions';
  
 
 const HackContextProvider: React.FC<HackContextProviderProps> = (
