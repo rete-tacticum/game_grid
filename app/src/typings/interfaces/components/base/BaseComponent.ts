@@ -1,8 +1,8 @@
-interface ComponentProps {
+interface BaseComponentProps {
   className?: string;
   children?: React.ReactNode;
 }
 
 export type {
-  ComponentProps
+  BaseComponentProps
 };

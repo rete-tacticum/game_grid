@@ -9,7 +9,7 @@ interface HackContextProviderProps {
 
 interface HackFieldCellsState {
   selected: [number, number][],
-  highlighted: string[]
+  highlighted: [number, number][]
 }
 
 interface HackFieldMoveState {
