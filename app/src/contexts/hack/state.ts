@@ -1,3 +1,4 @@
+import { Dispatch } from "react";
 import { HackInitialState } from "_interfaces/contexts/Hack";
 
 const defaultState: HackInitialState = {
@@ -19,7 +20,7 @@ const defaultState: HackInitialState = {
   },
   'solutions': [],
   'solutionMinLen': 0,
-  'solutionsCount': 0
+  'solutionsCount': 0,
 }
 
 export { defaultState };

@@ -1,6 +1,6 @@
 import { randomDecimal } from '_helpers/misc';
 import { defaultState } from './state';
-import { HackAdditionalStateProps, HackInitialState } from '_interfaces/contexts/Hack';
+import { HackInitialState, HackInitialProps } from '_interfaces/contexts/Hack';
 
 
 const generateField = (height: number, width: number): Array<string[]> => {
@@ -43,7 +43,7 @@ const generateTraceSolutions = (field: Array<string[]>, start: number, count: nu
 }
 
 
-const getInitialState = ({ width, height, tries, solutionMinLen, solutionsCount }: HackAdditionalStateProps): HackInitialState => {
+const initState = ({ width, height, tries, solutionMinLen, solutionsCount }: HackInitialProps): HackInitialState => {
   const field = generateField(height, width);
   return {
     ...defaultState,
@@ -51,15 +51,13 @@ const getInitialState = ({ width, height, tries, solutionMinLen, solutionsCount 
     'height': height,
     'field': field,
     'tries': tries,
-    'solutionMinLen': solutionMinLen,
-    'solutionsCount': solutionsCount,
     'solutions': generateTraceSolutions(field, solutionMinLen, solutionsCount)
   }
 }
 
 
 export { 
-  getInitialState,
+  initState,
   getBacktrace,
   generateField,
   generateTraceSolutions

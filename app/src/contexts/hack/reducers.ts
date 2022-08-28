@@ -1,5 +1,5 @@
 import baseInitialState from './state';
-import { getInitialState } from './features';
+import { initState } from './features';
 import actions from './actions';
 import { MoveMode, HackInitialState, HackFieldMoveState, HackFieldCellsState } from '_interfaces/contexts/Hack';
 
@@ -63,7 +63,7 @@ const rootReducer = (state = baseInitialState, action: any): HackInitialState =>
     case actions.SUCCESS:
       return {...state, success: action.payload};
     case actions.RESET:
-      return {...baseInitialState, ...getInitialState(state)};
+      return {...baseInitialState, ...initState(state)};
     default:
       return state;
   }
