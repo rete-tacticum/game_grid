@@ -2,9 +2,10 @@ import React from 'react';
 import {nanoid} from 'nanoid';
 import classnames from 'classnames';
 import { HackTraceCell } from '../HackTraceCell/HackTraceCell';
+import { HackTraceProps } from '_interfaces/components/game/HackGame';
 import styles from './styles.module.scss';
 
-const HackTrace = ({trace = [], className}) => {
+const HackTrace: React.FC<HackTraceProps> = ({trace, className}: HackTraceProps) => {
   
   return (
     <div className={classnames(styles.root, className)}>

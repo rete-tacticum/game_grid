@@ -1,11 +1,10 @@
 import React from 'react';
-import {useContext} from 'react';
-import { HackDispatchContext } from '_contexts/hack';
+import { useDispatchContext } from '_contexts/hack';
 import actions from '_contexts/hack/actions';
 import styles from './styles.module.scss';
 
-export const HackControls = () => {
-  const [state, dispatch] = useContext(HackDispatchContext);
+export const HackControls: React.FC = () => {
+  const dispatch = useDispatchContext();
   const handleStart = () => dispatch({type: actions.INIT});
   const handleReset = () => dispatch({type: actions.RESET});
 

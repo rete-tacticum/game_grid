@@ -1,21 +1,26 @@
 import React from 'react'
 import classnames from 'classnames';
 import {useContext, useMemo} from 'react';
-import { HackContext } from '../../../context';
-import actions from '../../../context/actions';
+import { HackStateContext, useDispatchContext } from '_contexts/hack';
+import actions from '_contexts/hack/actions';
 import styles from './styles.module.scss'
+import { HackTraceCellProps } from '_interfaces/components/game/HackGame';
 
-const getValueFromCoords = (field, [x, y]) => field[x][y];
+const getValueFromCoords = (field: string[][], [x, y]: [number, number]): string => field[x][y];
 
-export const HackTraceCell = ({ hexCode, index, className}) => {
-  const [state, dispatch] = useContext(HackContext);
+export const HackTraceCell: React.FC<HackTraceCellProps> = ({ hexCode, index, className}: HackTraceCellProps) => {
+  const state = useContext(HackStateContext);
+  const dispatch = useDispatchContext();
+
   const isHighlighted = useMemo(() => {
-    return state.cells.selected.map((coords) => getValueFromCoords(state.field, coords)).includes(hexCode);
+    return state.cells.selected.map(
+      (coords: [number, number]) => getValueFromCoords(state.field, coords)
+    ).includes(hexCode);
   }, [state.cells.selected])
 
   const fieldHighlightOn = () => {
-    if (state.step <= 0 && !isHighlighted) {
-      const filtered = state.field.reduce((accum, row, rowIdx) => {
+    if (state.moves.step <= 0 && !isHighlighted) {
+      const filtered = state.field.reduce((accum: [number, number][], row: string[], rowIdx: number) => {
           row.forEach((cell, colIdx) => {
             if (cell === hexCode) {
               accum = [...accum, [rowIdx, colIdx]];
@@ -28,7 +33,7 @@ export const HackTraceCell = ({ hexCode, index, className}) => {
   }
 
   const fieldHighlightOff = () => {
-    if (state.step <= 0 && isHighlighted) {
+    if (state.moves.step <= 0 && isHighlighted) {
       dispatch({type: actions.HIGHLIGHT, payload: []});
     }
   }

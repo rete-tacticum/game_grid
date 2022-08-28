@@ -1,12 +1,12 @@
 import React from 'react';
 import {useContext, useMemo} from 'react';
 import {nanoid} from 'nanoid';
-import { HackContext } from '../../../context';
 import { HackTrace } from '../HackTrace/HackTrace';
+import { HackStateContext } from '_contexts/hack';
 import styles from './styles.module.scss';
 
-const HackSolution = () => {
-  const [state, dispatch] = useContext(HackContext);
+const HackSolution: React.FC = () => {
+  const state = useContext(HackStateContext);
 
   return (
     <div className={styles.root}>
