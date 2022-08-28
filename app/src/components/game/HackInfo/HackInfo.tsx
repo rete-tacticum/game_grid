@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { HackContext } from '../context';
+import { HackContext } from '_contexts/hack/Provider';
 
 export const HackInfo = () => {
   const [state, dispatch] = useContext(HackContext);

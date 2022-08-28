@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 import {useContext} from 'react';
 import classnames from 'classnames';
 import styles from './styles.module.scss';
-import { HackContext } from '../context';
-import actions from '../context/actions';
+import { HackContext } from '_contexts/hack/Provider';
+import actions from '_contexts/hack/actions';
 
-export const HackField = ({className, children}) => {
+
+// todo: typings
+export const HackField = ({className, children}: any) => {
   const [state, dispatch] = useContext(HackContext);
   const handleControls = (e) => {
     if (!state.locked) dispatch({type: actions.LOCK, lock: true});
@@ -16,8 +18,7 @@ export const HackField = ({className, children}) => {
     <div className={classnames(styles.root, className, {
       [styles.ignored]: state.success !== null
     })}
-         tabIndex="1"
-         focus="true"
+         tabIndex={1}
          style={{grid: `repeat(${state.height}, auto) / repeat(${state.width}, auto)`}}
          onKeyDown={handleControls}>
       {children}

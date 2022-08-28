@@ -1,7 +1,7 @@
 import React from 'react';
 import {useContext, useMemo} from 'react';
 import {nanoid} from 'nanoid';
-import { HackContext } from '../context';
+import { HackContext } from '../../../context';
 import { HackTrace } from '../HackTrace/HackTrace';
 import styles from './styles.module.scss';
 

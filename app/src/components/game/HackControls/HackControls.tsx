@@ -1,7 +1,7 @@
 import React from 'react';
 import {useContext} from 'react';
-import { HackDispatchContext } from 'Contexts/hack';
-import actions from 'Contexts/hack/actions';
+import { HackDispatchContext } from '_contexts/hack';
+import actions from '_contexts/hack/actions';
 import styles from './styles.module.scss';
 
 export const HackControls = () => {

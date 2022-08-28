@@ -1,8 +1,8 @@
 import React from 'react'
 import classnames from 'classnames';
 import {useContext, useMemo} from 'react';
-import { HackContext } from '../context';
-import actions from '../context/actions';
+import { HackContext } from '../../../context';
+import actions from '../../../context/actions';
 import styles from './styles.module.scss'
 
 const getValueFromCoords = (field, [x, y]) => field[x][y];

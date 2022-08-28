@@ -1,15 +1,16 @@
 import React from 'react';
-import {useRef, useContext, useEffect, useState} from 'react';
+import { useContext, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import styles from './styles.module.scss';
-import { HackContext } from '../context';
+import { HackContext } from '_contexts/hack/Provider';
+
 
 export const HackFieldCell = ({hex, pos='', className}) => {
   const [state, dispatch] = useContext(HackContext);
 
   const [isSelected, setSelected] = useState(false);
   const [isHighlighted, setHighlighted] = useState(false);
-  const convertCoords = (coords) => coords.join(":");
+  const convertCoords = (coords: number[]) => coords.join(":");
 
   useEffect(() => {
     setHighlighted(state.cells.highlighted.map(convertCoords).includes(pos));
