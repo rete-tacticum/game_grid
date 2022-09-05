@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HackContextProvider } from '_contexts/hack/Provider';
-import { HackInitialProps } from '_interfaces/contexts/Hack';
+import { HackInitialProps, HackInitialState } from '_interfaces/contexts/Hack';
 import { initState } from '_contexts/hack/features';
 
 interface hasChild {
@@ -11,16 +11,17 @@ export const HackContainer: React.FC<hasChild> = ({children}: hasChild): React.R
 
   function getParameters():HackInitialProps {
     return {
-      width: 12,
-      height: 8,
-      tries: 4,
+      size: 5,
+      tries: 7,
       solutionMinLen: 3,
       solutionsCount: 3
     }
   }
 
+  const getInitial = (): HackInitialState => initState(getParameters());
+
   return (
-    <HackContextProvider initialState={initState(getParameters())}>
+    <HackContextProvider getInitialState={getInitial}>
       { children }
     </HackContextProvider>
   )

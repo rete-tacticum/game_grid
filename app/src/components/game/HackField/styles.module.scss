@@ -1,10 +1,11 @@
 .root {
-  font-size: 1.25em;
+  font-size: 1em;
   outline: none;
   // pointer-events: none;
 }
 
 .cell {
+  width: fit-content;
   &:nth-child(even) {
     color: rgba(var(--color-white-val), .9);
   }

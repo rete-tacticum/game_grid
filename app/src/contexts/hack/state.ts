@@ -1,11 +1,9 @@
-import { Dispatch } from "react";
 import { HackInitialState } from "_interfaces/contexts/Hack";
 
 const defaultState: HackInitialState = {
   'field': [],
   'tries': 0,
-  'width': 0,
-  'height': 0,
+  'size': 0,
   'locked': false,
   'success': null,
   'cells': {

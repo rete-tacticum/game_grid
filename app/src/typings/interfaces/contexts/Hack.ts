@@ -3,8 +3,8 @@ import React from "react";
 type MoveMode = 'horizontal' | 'vertical';
 
 interface HackContextProviderProps {
-  initialState: HackInitialState,
-  children: React.ReactElement
+  getInitialState: () => HackInitialState;
+  children: React.ReactElement;
 }
 
 interface HackFieldCellsState {
@@ -22,8 +22,7 @@ interface HackFieldMoveState {
 interface HackInitialState {
   field: Array<string[]>;
   tries: number;
-  width: number;
-  height: number;
+  size: number;
   locked: boolean;
   success?: boolean | null;
   cells: HackFieldCellsState;
@@ -33,7 +32,7 @@ interface HackInitialState {
   solutionsCount: number;
 }
 
-type HackInitialPropsType = 'width' | 'height' | 'tries';
+type HackInitialPropsType = 'size' | 'tries';
 interface HackInitialProps extends Pick<HackInitialState, HackInitialPropsType> {
   solutionsCount: number;
   solutionMinLen: number;

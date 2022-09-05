@@ -1,7 +1,7 @@
 import { HackInitialState } from '_interfaces/contexts/Hack';
 import { BaseComponentProps } from '../base/BaseComponent';
 
-type HackFieldProps = Pick<HackInitialState, 'height' | 'width' | 'success'> & BaseComponentProps;
+type HackFieldProps = Pick<HackInitialState, 'size' | 'success'> & BaseComponentProps;
 type ChildlessComponent = Omit<BaseComponentProps, 'children'>;
 
 interface HackTraceProps extends ChildlessComponent {

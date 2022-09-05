@@ -1,0 +1,11 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  position: relative;
+  display: grid;
+  height: fit-content;
+  width: fit-content;
+}

@@ -5,8 +5,9 @@ import { HackInitialState, HackInitialProps } from '_interfaces/contexts/Hack';
 
 const generateField = (height: number, width: number): Array<string[]> => {
   // создает двумерную матрицу заданных размеров из hex-чисел
-  const base: number = randomDecimal(32, 224);
-  const range: [number, number] = base > 128 ? [base, base + 32] : [base - 32, base];
+  const [minVal, maxVal] = [128, 196]
+  const base: number = randomDecimal(128, 224);
+  const range: [number, number] = base > (maxVal - minVal) / 2 ? [base, base + 16] : [base - 16, base];
   return [...Array(height)].map(() => [...Array(width)].map(() => randomDecimal(...range).toString(16)));
 }
 
@@ -43,15 +44,14 @@ const generateTraceSolutions = (field: Array<string[]>, start: number, count: nu
 }
 
 
-const initState = ({ width, height, tries, solutionMinLen, solutionsCount }: HackInitialProps): HackInitialState => {
-  const field = generateField(height, width);
+const initState = ({ size, tries, solutionMinLen, solutionsCount }: HackInitialProps): HackInitialState => {
+  const field = generateField(size, size);
   return {
     ...defaultState,
-    'width': width,
-    'height': height,
-    'field': field,
-    'tries': tries,
-    'solutions': generateTraceSolutions(field, solutionMinLen, solutionsCount)
+    size: size,
+    field: field,
+    tries: tries,
+    solutions: generateTraceSolutions(field, solutionMinLen, solutionsCount)
   }
 }
 
