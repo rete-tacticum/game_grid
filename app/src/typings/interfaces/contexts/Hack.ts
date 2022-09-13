@@ -24,6 +24,7 @@ interface HackInitialState {
   tries: number;
   size: number;
   locked: boolean;
+  visible: boolean;
   success?: boolean | null;
   cells: HackFieldCellsState;
   moves: HackFieldMoveState;

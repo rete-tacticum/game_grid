@@ -6,12 +6,12 @@ import styles from './styles.module.scss';
 export const HackControls: React.FC = () => {
   const dispatch = useDispatchContext();
   const handleStart = () => dispatch({type: actions.INIT});
-  const handleReset = () => dispatch({type: actions.RESET});
+  const handleReset = () => dispatch({type: actions.SUCCESS, payload: false});
 
   return (
     <div className={styles.root}>
       <button className={styles.control} onClick={handleStart}>START GAME</button>
-      <button className={styles.control} onClick={handleReset}>RESET GAME</button>
+      <button className={styles.control} onClick={handleReset}>END GAME</button>
     </div>
   )
 }

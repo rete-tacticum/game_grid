@@ -8,6 +8,14 @@
   z-index: 1;
 }
 
+.content {
+  display: flex;
+}
+
+.main, .aside {
+  flex-grow: 1;
+}
+
 .background {
   position: absolute;
   top: 0;

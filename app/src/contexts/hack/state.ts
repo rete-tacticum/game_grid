@@ -4,6 +4,7 @@ const defaultState: HackInitialState = {
   'field': [],
   'tries': 0,
   'size': 0,
+  'visible': false,
   'locked': false,
   'success': null,
   'cells': {

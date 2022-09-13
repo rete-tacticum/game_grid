@@ -1,8 +1,20 @@
 .root {
   display: flex;
-  gap: 2rem;
+  gap: 2em;
 }
 
 .control {
-  border: 1px solid var(--color-primary);
+  text-transform: uppercase;
+  padding: .75em 1.25rem;
+  font-size: 1rem;
+  background-color: unset;
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+  opacity: .5;
+  transition: 200ms;
+
+  &:hover, &:focus, &:active {
+    background-color: rgba(var(--color-white-val), .1);
+    opacity: .9;
+  }
 }

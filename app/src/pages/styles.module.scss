@@ -9,3 +9,9 @@
   height: fit-content;
   width: fit-content;
 }
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}

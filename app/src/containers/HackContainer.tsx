@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { HackContextProvider } from '_contexts/hack/Provider';
 import { HackInitialProps, HackInitialState } from '_interfaces/contexts/Hack';
 import { initState } from '_contexts/hack/features';
