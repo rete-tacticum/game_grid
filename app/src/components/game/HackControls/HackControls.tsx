@@ -10,8 +10,8 @@ export const HackControls: React.FC = () => {
 
   return (
     <div className={styles.root}>
-      <button className={styles.control} onClick={handleStart}>START GAME</button>
-      <button className={styles.control} onClick={handleReset}>END GAME</button>
+      <button className={styles.control} onClick={handleStart}>START HACK</button>
+      <button className={styles.control} onClick={handleReset}>ABORT HACK</button>
     </div>
   )
 }

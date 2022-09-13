@@ -1,20 +1,45 @@
 .root {
+  width: 100%;
   display: flex;
   gap: 2em;
+  border-top: 1px solid rgba(var(--color-white-val), .2);
+  padding-top: .5em;
 }
 
 .control {
   text-transform: uppercase;
-  padding: .75em 1.25rem;
+  padding: .75em .25rem;
   font-size: 1rem;
+  line-height: 1.25rem;
   background-color: unset;
   color: var(--color-white);
-  border: 1px solid var(--color-white);
+  // border: 1px solid var(--color-white);
+  border: 0;
   opacity: .5;
   transition: 200ms;
 
-  &:hover, &:focus, &:active {
-    background-color: rgba(var(--color-white-val), .1);
-    opacity: .9;
+  &:before {
+    content: "> ";
   }
+
+  &:after {
+    content: " <";
+  }
+
+  &:before, &:after {
+    visibility: hidden;
+  }
+
+  &:hover, &:focus, &:active {
+    text-decoration: dotted;
+    // background-color: rgba(var(--color-white-val), .1);
+    opacity: .9;
+    cursor: pointer;
+
+    &:before, &:after {
+      visibility: visible;
+    }
+  }
+
+
 }

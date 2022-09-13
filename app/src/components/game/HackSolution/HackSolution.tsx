@@ -14,6 +14,7 @@ const HackSolution: React.FC = () => {
       {
       state.visible ?
       <div className={styles.root}>
+        <p>...getting traces</p>
         {state.solutions.map(hexList => <HackTrace key={nanoid()} trace={hexList}/>)}
       </div>
       : 

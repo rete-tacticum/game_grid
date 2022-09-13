@@ -5,7 +5,6 @@ import { Background } from '_components/base/Background/Background';
 import { Layout } from '_components/base/Layout/Layout';
 import { HackInfo } from '_components/game/HackInfo/HackInfo';
 import { HackSolution } from '_components/game/HackSolution/HackSolution';
-import { HackStateContext } from '_contexts/hack';
 import { HackControls } from '_components/game/HackControls/HackControls';
 import styles from './styles.module.scss';
 
@@ -16,7 +15,6 @@ export function HackPage(): React.ReactElement {
       <Layout
         main={
           <div className={styles.main}>
-            <HackSolution/>
             <HackField className={styles.field}/>
           </div>
         }

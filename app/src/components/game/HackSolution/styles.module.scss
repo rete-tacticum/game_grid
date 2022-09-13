@@ -1,11 +1,10 @@
 .root {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 1rem;
   width: 100%;
-  padding: 1rem;
-  font-size: 1.25rem;
-  text-transform: uppercase;
+  line-height: 2.25rem;
 }
 
 .solution {

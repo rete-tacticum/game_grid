@@ -1,11 +1,15 @@
 .root {
-  color: red;
+  color: var(--main-color);
   cursor: pointer;
   outline: none;
+  padding: 0 .5em;
+  border: 1px solid rgba(var(--color-main-val), .3);
 
   &:hover, &:focus, &:active {
     font-weight: 600;
     text-decoration: underline;
+    background-color: rgba(var(--color-main-val), .2);
+    border: 1px solid rgba(var(--color-main-val), .5);
   }
 }
 

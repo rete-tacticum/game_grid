@@ -11,7 +11,7 @@ export const HackContainer: React.FC<hasChild> = ({children}: hasChild): React.R
 
   function getParameters():HackInitialProps {
     return {
-      size: 5,
+      size: 6, 
       tries: 7,
       solutionMinLen: 3,
       solutionsCount: 3

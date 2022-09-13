@@ -4,7 +4,7 @@ type MoveMode = 'horizontal' | 'vertical';
 
 interface HackContextProviderProps {
   getInitialState: () => HackInitialState;
-  children: React.ReactElement;
+  children: React.ReactNode;
 }
 
 interface HackFieldCellsState {
