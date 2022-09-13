@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { nanoid } from 'nanoid';
 import classnames from 'classnames';
 import styles from './styles.module.scss';
@@ -12,6 +12,10 @@ import { RandomizeText } from '_components/misc/RandomizeText/RandomizeText';
 export const HackField: React.FC<BaseComponentProps> = ({className}) => {
   const state = useContext(HackStateContext);
   const dispatch = useDispatchContext();
+
+  const fieldElement = useCallback((focusElement: HTMLDivElement) => {
+    if (focusElement) focusElement.focus();
+  }, [])
 
   const mappedField = state.field.reduce((
       accum: Array<[number, number, string]>,
@@ -36,6 +40,7 @@ export const HackField: React.FC<BaseComponentProps> = ({className}) => {
           [styles.ignored]: state.success !== null
         })}
           tabIndex={1}
+          ref={fieldElement}
           style={{ grid: `repeat(${state.size}, auto) / repeat(${state.size}, auto)` }}
           onKeyDown={handleControls}>
             {mappedField.map(item => {

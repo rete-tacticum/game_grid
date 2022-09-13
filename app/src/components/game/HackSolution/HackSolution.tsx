@@ -15,9 +15,6 @@ const HackSolution: React.FC = () => {
       state.visible ?
       <div className={styles.root}>
         {state.solutions.map(hexList => <HackTrace key={nanoid()} trace={hexList}/>)}
-        <div className={styles.solution}>
-          {state.cells.selected.map(e => <span key={nanoid()}>{state.field[e[0]][e[1]]}</span>)}
-        </div>
       </div>
       : 
       <RandomizeText value="awaiting solutions..." rate={280}/>

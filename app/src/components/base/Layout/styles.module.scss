@@ -10,10 +10,11 @@
 
 .content {
   display: flex;
+  gap: 1rem;
 }
 
 .main, .aside {
-  flex-grow: 1;
+  width: 100%;
 }
 
 .background {
