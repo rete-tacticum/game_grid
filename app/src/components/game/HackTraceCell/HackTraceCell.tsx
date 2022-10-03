@@ -33,8 +33,8 @@ export const HackTraceCell: React.FC<HackTraceCellProps> = ({ hexCode, index, cl
   }
 
   const fieldHighlightOff = () => {
-    if (state.moves.step <= 0 && isHighlighted) {
-      dispatch({type: actions.HIGHLIGHT, payload: []});
+    if (state.moves.step <= 0) {
+      dispatch({type: actions.HIGHLIGHT, payload: Array.from(Array(state.size)).map((_, idx) => [idx, 0])});
     }
   }
 

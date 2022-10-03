@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import classnames from 'classnames';
 import styles from './styles.module.scss';
 import { HackStateContext, useDispatchContext } from '_contexts/hack';
-import { HackFieldCell } from '../HackFieldCell/HackFieldCell';
+import { HackFieldCellContainer } from '_src/containers/HackFieldCellContainer';
 import actions from '_contexts/hack/actions';
 import { BaseComponentProps } from '_interfaces/components/base/BaseComponent';
 import { RandomizeText } from '_components/misc/RandomizeText/RandomizeText';
@@ -45,7 +45,7 @@ export const HackField: React.FC<BaseComponentProps> = ({className}) => {
           onKeyDown={handleControls}>
             {mappedField.map(item => {
               const [row, col, value] = [...item];
-              return <HackFieldCell key={nanoid()}
+              return <HackFieldCellContainer key={nanoid()}
                 pos={`${row}:${col}`}
                 hex={value}
                 className={styles.cell}

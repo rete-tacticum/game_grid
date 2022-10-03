@@ -9,7 +9,7 @@ const defaultState: HackInitialState = {
   'success': null,
   'cells': {
     'selected': [],
-    'highlighted': []
+    'highlighted': [],
   },
   'moves': {
     'step': 0,

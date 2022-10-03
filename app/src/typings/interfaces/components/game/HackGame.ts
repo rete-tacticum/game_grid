@@ -13,14 +13,21 @@ interface HackTraceCellProps extends ChildlessComponent {
   index: number
 }
 
-interface HackFieldCellProps extends ChildlessComponent {
+interface HackFieldCellContainerProps extends ChildlessComponent {
   hex: string;
   pos: string;
+}
+
+interface HackFieldCellProps extends ChildlessComponent {
+  highlighted: boolean;
+  selected: boolean;
+  hex: string;
 }
 
 export type {
   HackFieldProps,
   HackTraceProps,
   HackTraceCellProps,
-  HackFieldCellProps
+  HackFieldCellProps,
+  HackFieldCellContainerProps
 }

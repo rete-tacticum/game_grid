@@ -7,16 +7,13 @@
   border: 1px solid transparent;
   color: rgba(var(--color-main-val), .9);
   padding: .5rem 1.5rem;
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .highlighted {
-  background-color: rgba(var(--color-main-val), .25);
+  background-color: rgba(var(--color-main-val), .15);
 }
 
 .selected {
-  border: 1px solid rgba(var(--color-main-val), .5);
+  background-color: rgba(var(--color-main-val), .3);
+  border: 1px solid rgba(var(--color-main-val), .7);
 }

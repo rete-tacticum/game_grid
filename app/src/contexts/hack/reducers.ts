@@ -1,5 +1,4 @@
 import baseInitialState from './state';
-import { initState } from './features';
 import actions from './actions';
 import { MoveMode, HackInitialState, HackFieldMoveState, HackFieldCellsState } from '_interfaces/contexts/Hack';
 
@@ -57,7 +56,12 @@ const rootReducer = (state = baseInitialState, action: any): HackInitialState =>
       return {...state, visible: true};
     case actions.LOCK:
       if (!state.locked) {
-        return {...state, locked: action.payload};
+        return {
+          ...state,
+          locked: action.payload,
+          moves: {...state.moves, col: 0, row: 0},
+          cells: {...state.cells, highlighted: Array.from(Array(state.size)).map((_, idx) => [idx, 0])}
+        };
       }
       return state;
     case actions.MOVE:

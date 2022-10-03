@@ -14,11 +14,11 @@ const HackContextProvider: React.FC<HackContextProviderProps> = (
     
   useEffect(() => {
     const moveState: HackFieldMoveState = state.moves;
-    const cells: number[][] = moveState.mode === 'horizontal'
+    const cells: number[][] = moveState.mode === 'vertical'
                                              ? state.field.map((_, idx) => [idx, moveState.col])
                                              : [...Array(state.size)].map((_, idx) => [moveState.row, idx])
     dispatch({type: actions.HIGHLIGHT, payload: cells});
-  }, [state.moves.row, state.moves.col, state.moves.mode, state.locked])
+  }, [state.moves.mode])
 
   useEffect(() => {
     if (state.cells.selected.length < 1) return;
