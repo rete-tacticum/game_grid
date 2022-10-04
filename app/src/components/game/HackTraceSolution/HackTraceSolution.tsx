@@ -10,8 +10,7 @@ export const HackTraceSolution: React.FC = ({ className }: BaseComponentProps) =
   const state = useContext(HackStateContext);
   const hexCode = (idx: number): string => {
     const pos = state.cells.selected[idx];
-    if (!pos) return '';
-    return state.field[pos[0]][pos[1]];
+    return pos ? state.field[pos[0]][pos[1]] : '--';
   };
 
   return (

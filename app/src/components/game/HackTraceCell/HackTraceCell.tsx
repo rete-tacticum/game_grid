@@ -8,7 +8,7 @@ import { HackTraceCellProps } from '_interfaces/components/game/HackGame';
 
 const getValueFromCoords = (field: string[][], [x, y]: [number, number]): string => field[x][y];
 
-export const HackTraceCell: React.FC<HackTraceCellProps> = ({ hexCode, index, className}: HackTraceCellProps) => {
+export const HackTraceCell: React.FC<HackTraceCellProps> = ({ hexCode, index, className}) => {
   const state = useContext(HackStateContext);
   const dispatch = useDispatchContext();
 

@@ -2,18 +2,16 @@
   height: 100%;
   width: 100%;
   display: flex;
-  min-height: 1.25rem;
-  gap: .5rem;
+  gap: 1rem;
 }
 
 .cell {
   display: flex;
   align-items: center;
-  color: var(--main-color);
+  color: rgba(var(--color-main-val), .75);
   outline: none;
   padding: 0 .5em;
-  height: 2.5em;
-  width: 2.5em;
+  line-height: 2.25em;
   font-size: 1em;
   font-weight: 600;
   border: 1px solid rgba(var(--color-main-val), .3);
