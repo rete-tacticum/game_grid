@@ -6,7 +6,7 @@ import { HackStateContext } from '_contexts/hack';
 import styles from './styles.module.scss';
 import { RandomizeText } from '_components/misc/RandomizeText/RandomizeText';
 
-const HackSolution: React.FC = () => {
+const HackTraces: React.FC = () => {
   const state = useContext(HackStateContext);
 
   return (
@@ -14,7 +14,6 @@ const HackSolution: React.FC = () => {
       {
       state.visible ?
       <div className={styles.root}>
-        <p>...getting traces</p>
         {state.solutions.map(hexList => <HackTrace key={nanoid()} trace={hexList}/>)}
       </div>
       : 
@@ -24,4 +23,4 @@ const HackSolution: React.FC = () => {
   )
 }
 
-export { HackSolution };
+export { HackTraces };
