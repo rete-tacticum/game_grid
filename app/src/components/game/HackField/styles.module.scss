@@ -1,7 +1,6 @@
 .root {
   font-size: 1em;
   outline: none;
-  // pointer-events: none;
 }
 
 .cell {
@@ -13,4 +12,9 @@
 
 .ignored {
   pointer-events: none;
+}
+
+.label {
+  font-size: .75rem;
+  letter-spacing: 1px;
 }

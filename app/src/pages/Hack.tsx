@@ -1,11 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { HackField } from '_components/game/HackField/HackField';
-import { HackContainer } from '../containers/HackContainer';
+import React from 'react';
+import { HackContainer } from '_containers/HackContainer';
 import { Background } from '_components/base/Background/Background';
 import { Layout } from '_components/base/Layout/Layout';
 import { HackControls } from '_components/game/HackControls/HackControls';
-import { HackGameInfo } from '_src/components/game/HackGameInfo/HackGameInfo';
+import { ContainGameInfo } from '_components/game/ContainGameInfo/ContainGameInfo';
+import { ContainField } from '_components/game/ContainField/ContainField';
 import styles from './styles.module.scss';
+import classnames from 'classnames';
 
 
 export function HackPage(): React.ReactElement {
@@ -15,13 +16,11 @@ export function HackPage(): React.ReactElement {
       <Layout
         main={
           <div className={styles.main}>
-            <HackField className={styles.field}/>
+            <ContainField className={classnames(styles.dotted, styles.field)}/>
           </div>
         }
         aside={
-          <div className={styles.backtrace}>
-            <HackGameInfo/>
-          </div>
+          <ContainGameInfo className={styles.backtrace}/>
         }
         footer={
           <div className={styles.footer}>

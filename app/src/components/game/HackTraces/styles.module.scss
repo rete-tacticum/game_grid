@@ -1,12 +1,18 @@
 .root {
   display: flex;
   flex-direction: column;
+  gap: 1.25rem;
+}
+
+.traces {
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
   width: 100%;
   line-height: 2.25rem;
 }
 
-.solution {
-  display: grid;
-  min-height: 1.25rem;
+.label {
+  font-size: .75rem;
+  letter-spacing: 1px;
 }

@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 export const HackControls: React.FC = () => {
   const dispatch = useDispatchContext();
   const handleStart = () => dispatch({type: actions.INIT});
-  const handleReset = () => dispatch({type: actions.SUCCESS, payload: false});
+  const handleReset = () => dispatch({type: actions.END, payload: false});
 
   return (
     <div className={styles.root}>

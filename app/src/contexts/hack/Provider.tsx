@@ -26,12 +26,12 @@ const HackContextProvider: React.FC<HackContextProviderProps> = (
 
     state.solutions.some((solution: string[]) => {
       if (values.join('').includes(solution.join(''))) {
-        dispatch({type: actions.SUCCESS, payload: true})
+        dispatch({type: actions.END, payload: true})
       }
     })
 
     if (state.moves.step >= state.tries) {
-      dispatch({type: actions.SUCCESS, payload: false})
+      dispatch({type: actions.END, payload: false})
     }
   }, [state.moves.step])
 

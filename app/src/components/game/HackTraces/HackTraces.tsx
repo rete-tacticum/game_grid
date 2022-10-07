@@ -10,16 +10,12 @@ const HackTraces: React.FC = () => {
   const state = useContext(HackStateContext);
 
   return (
-    <>
-      {
-      state.visible ?
-      <div className={styles.root}>
+    <div className={styles.root}>
+      <RandomizeText value={'routes traced:'} className={styles.label}/>
+      <div className={styles.traces}>
         {state.solutions.map(hexList => <HackTrace key={nanoid()} trace={hexList}/>)}
       </div>
-      : 
-      <RandomizeText value="awaiting solutions..." rate={280}/>
-      }
-    </>
+    </div>
   )
 }
 

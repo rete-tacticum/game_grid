@@ -1,7 +1,12 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+}
+
+.dotted {
+  padding: .5rem;
+  border: 1px dotted rgba(var(--color-main-val), .15);
 }
 
 .field {
@@ -9,6 +14,7 @@
   display: grid;
   height: fit-content;
   width: fit-content;
+  background-color: rgba(var(--color-main-val), .05);
 }
 
 .backtrace {

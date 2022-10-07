@@ -4,8 +4,8 @@ const actions = {
   MOVE: 'MOVE',
   HIGHLIGHT: 'HIGHLIGHT',
   BACKTRACE: 'BACKTRACE',
-  SUCCESS: 'SUCCESS',
-  RESET: 'RESET'
+  RESET: 'RESET',
+  END: 'END',
 }
 
 export { actions };

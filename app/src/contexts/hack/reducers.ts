@@ -50,6 +50,9 @@ const positionReducer = (state: HackInitialState, action: any): HackInitialState
   }
 }
 
+
+
+
 const rootReducer = (state = baseInitialState, action: any): HackInitialState => {
   switch (action.type) {
     case actions.INIT:
@@ -70,8 +73,8 @@ const rootReducer = (state = baseInitialState, action: any): HackInitialState =>
       return {...state, cells: {...state.cells, highlighted: action.payload}};
     case actions.BACKTRACE:
       return {...state, solutions: action.payload};
-    case actions.SUCCESS:
-      return {...state, success: action.payload, cells: {highlighted: [], selected: []}};
+    case actions.END:
+      return {...state, success: action.payload.success, cells: {highlighted: [], selected: []}};
     case actions.RESET:
       return {...baseInitialState, ...action.payload};
     default:
