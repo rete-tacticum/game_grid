@@ -1,6 +1,9 @@
 import React from "react";
+import { moves, results } from './constants';
 
-type MoveMode = 'horizontal' | 'vertical';
+type MoveMode = typeof moves[keyof typeof moves];
+type GameResult = typeof results[keyof typeof results];
+
 
 interface HackContextProviderProps {
   getInitialState: () => HackInitialState;
@@ -26,6 +29,7 @@ interface HackInitialState {
   locked: boolean;
   visible: boolean;
   success?: boolean | null;
+  result: GameResult;
   cells: HackFieldCellsState;
   moves: HackFieldMoveState;
   solutions: Array<string[]>;
@@ -41,6 +45,7 @@ interface HackInitialProps extends Pick<HackInitialState, HackInitialPropsType> 
 
 export type {
   MoveMode,
+  GameResult,
   HackInitialState,
   HackInitialProps,
   HackFieldCellsState,

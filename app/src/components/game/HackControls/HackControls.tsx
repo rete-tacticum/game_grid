@@ -1,12 +1,13 @@
 import React from 'react';
 import { useDispatchContext } from '_contexts/hack';
 import actions from '_contexts/hack/actions';
+import { results } from '_interfaces/contexts/constants';
 import styles from './styles.module.scss';
 
 export const HackControls: React.FC = () => {
   const dispatch = useDispatchContext();
   const handleStart = () => dispatch({type: actions.INIT});
-  const handleReset = () => dispatch({type: actions.END, payload: false});
+  const handleReset = () => dispatch({type: actions.END, payload: results.RESET});
 
   return (
     <div className={styles.root}>

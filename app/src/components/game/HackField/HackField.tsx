@@ -6,6 +6,7 @@ import actions from '_contexts/hack/actions';
 import styles from './styles.module.scss';
 import classnames from 'classnames';
 import { ContainFieldCell } from '../ContainFieldCell/ContainFieldCell';
+import { results } from '_interfaces/contexts/constants';
 
 
 export const HackField: React.FC<BaseComponentProps> = ({className}) => {
@@ -28,12 +29,12 @@ export const HackField: React.FC<BaseComponentProps> = ({className}) => {
 
   const handleControls = (e: React.KeyboardEvent) => {
     dispatch({type: actions.LOCK, payload: true});
-    dispatch({type: actions.MOVE, key: e.key});
+    dispatch({type: actions.MOVE, payload: e.key});
   }
 
   return (
       <div className={classnames(styles.root, className, {
-        [styles.ignored]: state.success !== null
+        [styles.ignored]: state.result !== results.NONE
       })}
         tabIndex={1}
         ref={fieldElement}

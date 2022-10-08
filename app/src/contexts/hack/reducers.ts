@@ -1,6 +1,7 @@
 import baseInitialState from './state';
 import actions from './actions';
 import { MoveMode, HackInitialState, HackFieldMoveState, HackFieldCellsState } from '_interfaces/contexts/Hack';
+import { moves, results } from '_interfaces/contexts/constants';
 
 
 const positionReducer = (state: HackInitialState, action: any): HackInitialState => {
@@ -9,37 +10,37 @@ const positionReducer = (state: HackInitialState, action: any): HackInitialState
   const moveState: HackFieldMoveState = {...state.moves};
   const cellState: HackFieldCellsState = {...state.cells};
 
-  switch (action?.key.toLowerCase()) {
+  switch (action.payload.toLowerCase()) {
     case "a":
     case "arrowleft":
-      if (moveState.col > 0 && moveState.mode === 'horizontal') {
+      if (moveState.col > 0 && moveState.mode === moves.AXIS_X) {
         moveState.col--;
         return {...state, moves: moveState};
       }
       return state;
     case "d":
     case "arrowright":
-      if (moveState.col < state.size - 1 && moveState.mode === 'horizontal') {
+      if (moveState.col < state.size - 1 && moveState.mode === moves.AXIS_X) {
         moveState.col++;
         return {...state, moves: moveState};
       }
       return state;
     case "w":
     case "arrowup":
-      if (moveState.row > 0 && moveState.mode === 'vertical') {
+      if (moveState.row > 0 && moveState.mode === moves.AXIS_Y) {
         moveState.row--;
         return {...state, moves: moveState};
       }
       return state;
     case "s":
     case "arrowdown":
-      if (moveState.row < state.size - 1 && moveState.mode === 'vertical') {
+      if (moveState.row < state.size - 1 && moveState.mode === moves.AXIS_Y) {
         moveState.row++;
         return {...state, moves: moveState};
       }
       return state;
     case "enter":
-      newMode = moveState.mode === 'horizontal' ? 'vertical' : 'horizontal';
+      newMode = moveState.mode === moves.AXIS_X ? moves.AXIS_Y : moves.AXIS_X;
       return {
         ...state,
         moves: {...moveState, mode: newMode, step: moveState.step + 1},
@@ -49,9 +50,6 @@ const positionReducer = (state: HackInitialState, action: any): HackInitialState
       return state;
   }
 }
-
-
-
 
 const rootReducer = (state = baseInitialState, action: any): HackInitialState => {
   switch (action.type) {
@@ -68,13 +66,13 @@ const rootReducer = (state = baseInitialState, action: any): HackInitialState =>
       }
       return state;
     case actions.MOVE:
-      return state?.success === null ? positionReducer(state, action) : state;
+      return state.result === results.NONE ? positionReducer(state, action) : state;
     case actions.HIGHLIGHT:
       return {...state, cells: {...state.cells, highlighted: action.payload}};
     case actions.BACKTRACE:
       return {...state, solutions: action.payload};
     case actions.END:
-      return {...state, success: action.payload.success, cells: {highlighted: [], selected: []}};
+      return {...state, result: action.payload};
     case actions.RESET:
       return {...baseInitialState, ...action.payload};
     default:

@@ -1,3 +1,4 @@
+import { moves } from "_interfaces/contexts/constants";
 import { HackInitialState } from "_interfaces/contexts/Hack";
 
 const defaultState: HackInitialState = {
@@ -6,7 +7,7 @@ const defaultState: HackInitialState = {
   'size': 0,
   'visible': false,
   'locked': false,
-  'success': null,
+  'result': null,
   'cells': {
     'selected': [],
     'highlighted': [],
@@ -15,7 +16,7 @@ const defaultState: HackInitialState = {
     'step': 0,
     'col': 0,
     'row': 0,
-    'mode': 'vertical'
+    'mode': moves.AXIS_Y
   },
   'solutions': [],
   'solutionMinLen': 0,

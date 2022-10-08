@@ -3,6 +3,7 @@ import { ShowByState } from '_components/misc/ShowByState/ShowByState';
 import { Timer } from '_components/misc/Timer/Timer';
 import { HackStateContext, useDispatchContext } from '_contexts/hack';
 import actions from '_contexts/hack/actions';
+import { results } from '_interfaces/contexts/constants';
 import styles from './styles.module.scss';
 
 
@@ -10,7 +11,7 @@ export const HackHeader: React.FC = () => {
   const dispatch = useDispatchContext();
   const state = useContext(HackStateContext);
 
-  const loseGame = () => dispatch({type: actions.END, payload: 'fail'});
+  const loseGame = () => dispatch({type: actions.END, payload: results.FAIL});
 
   return useMemo(() => (
     <div className={styles.root}>

@@ -2,6 +2,7 @@ import React from 'react';
 import { HackContainer } from '_containers/HackContainer';
 import { Background } from '_components/base/Background/Background';
 import { Layout } from '_components/base/Layout/Layout';
+import { HackHeader } from '_components/game/HackHeader/HackHeader';
 import { HackControls } from '_components/game/HackControls/HackControls';
 import { ContainGameInfo } from '_components/game/ContainGameInfo/ContainGameInfo';
 import { ContainField } from '_components/game/ContainField/ContainField';
@@ -13,7 +14,10 @@ export function HackPage(): React.ReactElement {
 
   return (
     <HackContainer>
-      <Layout
+      <Layout className={styles.root}
+        header={
+          <HackHeader/>
+        }
         main={
           <div className={styles.main}>
             <ContainField className={classnames(styles.dotted, styles.field)}/>
