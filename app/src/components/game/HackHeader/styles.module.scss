@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 2.25rem;
+  padding: .5rem;
+  background: rgba(var(--color-main-val), .05);
+  border: 1px dotted rgba(var(--color-main-val), .3);
+  font-size: 1.25rem;
+  font-weight: 200;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
