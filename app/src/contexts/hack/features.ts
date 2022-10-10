@@ -44,10 +44,11 @@ const generateTraceSolutions = (field: Array<string[]>, start: number, count: nu
 }
 
 
-const initState = ({ size, tries, solutionMinLen, solutionsCount }: HackInitialProps): HackInitialState => {
+const initState = ({ size, tries, time, solutionMinLen, solutionsCount }: HackInitialProps): HackInitialState => {
   const field = generateField(size, size);
   return {
     ...defaultState,
+    time: time,
     size: size,
     field: field,
     tries: tries,

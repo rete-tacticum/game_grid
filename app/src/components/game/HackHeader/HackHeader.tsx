@@ -1,4 +1,5 @@
 import React, {useContext, useMemo} from 'react';
+import { LoadingBar } from '_components/misc/LoadingBar/LoadingBar';
 import { ShowByState } from '_components/misc/ShowByState/ShowByState';
 import { Timer } from '_components/misc/Timer/Timer';
 import { HackStateContext, useDispatchContext } from '_contexts/hack';
@@ -17,7 +18,9 @@ export const HackHeader: React.FC = () => {
     <div className={styles.root}>
       {state.visible
       ? <ShowByState condition={state.locked} placeholder={'breaching protocol acquired'}>
-          <Timer className={styles.timer} seconds={100} onEnd={loseGame}/>
+          <span>breaching...</span>
+          <Timer className={styles.timer} seconds={state.time} blinkOn={10} onEnd={loseGame}/>
+          <LoadingBar className={styles.loading} seconds={state.time} reverse={true}/>
         </ShowByState>
       : <span>system mode</span>}
     </div>

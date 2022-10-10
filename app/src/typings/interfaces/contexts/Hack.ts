@@ -24,6 +24,7 @@ interface HackFieldMoveState {
 
 interface HackInitialState {
   field: Array<string[]>;
+  time: number;
   tries: number;
   size: number;
   locked: boolean;
@@ -37,7 +38,7 @@ interface HackInitialState {
   solutionsCount: number;
 }
 
-type HackInitialPropsType = 'size' | 'tries';
+type HackInitialPropsType = 'size' | 'tries' | 'time';
 interface HackInitialProps extends Pick<HackInitialState, HackInitialPropsType> {
   solutionsCount: number;
   solutionMinLen: number;

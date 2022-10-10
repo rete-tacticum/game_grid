@@ -9,15 +9,18 @@ interface hasChild {
 
 export const HackContainer: React.FC<hasChild> = ({children}: hasChild): React.ReactElement => {
 
+  // dataset should be acquired from API
   function getParameters():HackInitialProps {
     return {
       size: 6, 
       tries: 7,
+      time: 20,
       solutionMinLen: 3,
       solutionsCount: 3
     }
   }
 
+  // required for resolve initial state inside context provider
   const getInitial = (): HackInitialState => initState(getParameters());
 
   return (

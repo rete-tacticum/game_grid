@@ -8,6 +8,7 @@ import { ContainGameInfo } from '_components/game/ContainGameInfo/ContainGameInf
 import { ContainField } from '_components/game/ContainField/ContainField';
 import styles from './styles.module.scss';
 import classnames from 'classnames';
+import { LoadingBar } from '_components/misc/LoadingBar/LoadingBar';
 
 
 export function HackPage(): React.ReactElement {

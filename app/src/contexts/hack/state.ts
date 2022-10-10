@@ -3,6 +3,7 @@ import { HackInitialState } from "_interfaces/contexts/Hack";
 
 const defaultState: HackInitialState = {
   'field': [],
+  'time': 30,
   'tries': 0,
   'size': 0,
   'visible': false,
