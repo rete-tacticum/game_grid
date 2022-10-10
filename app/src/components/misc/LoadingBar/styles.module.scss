@@ -1,0 +1,39 @@
+.root {
+  width: 100%;
+  position: relative;
+}
+
+.bar {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  animation-timing-function: linear;
+}
+
+.loading {
+  left: 0;
+  animation-name: fillNormal;
+}
+
+.loadingReverse {
+  right: 0;
+  animation-name: fillReverse;
+}
+
+@keyframes fillNormal {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes fillReverse {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
