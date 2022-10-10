@@ -1,13 +1,20 @@
 .root {
   display: flex;
-  align-items: center;
+  position: relative;
+  justify-content: space-between;
   width: 100%;
   height: 2.25rem;
   padding: .5rem;
   background: rgba(var(--color-main-val), .05);
   border: 1px dotted rgba(var(--color-main-val), .3);
-  font-size: 1.25rem;
-  font-weight: 200;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+.loading {
+  position: absolute;
+  opacity: .15;
+  height: 100%;
+  top: 0;
+  left: 0;
 }

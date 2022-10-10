@@ -2,11 +2,12 @@
   line-height: 2.5em;
   align-self: center;
   text-align: center;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   font-weight: bold;
   border: 1px solid transparent;
   color: rgba(var(--color-main-val), .9);
   padding: .5rem 1.5rem;
+  letter-spacing: 1px;
 }
 
 .highlighted {
