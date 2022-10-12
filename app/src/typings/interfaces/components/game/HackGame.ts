@@ -9,8 +9,9 @@ interface HackTraceProps extends ChildlessComponent {
 }
 
 interface HackTraceCellProps extends ChildlessComponent {
-  hexCode: string,
-  index: number
+  hexCode: string;
+  highlighted: boolean;
+  index: number;
 }
 
 interface ContainFieldCellProps extends ChildlessComponent {

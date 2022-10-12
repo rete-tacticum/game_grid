@@ -5,21 +5,15 @@ import { HackStateContext, useDispatchContext } from '_contexts/hack';
 import actions from '_contexts/hack/actions';
 import styles from './styles.module.scss'
 import { HackTraceCellProps } from '_interfaces/components/game/HackGame';
+import { getValueFromCoords } from '_helpers/misc';
 
-const getValueFromCoords = (field: string[][], [x, y]: [number, number]): string => field[x][y];
 
-export const HackTraceCell: React.FC<HackTraceCellProps> = ({ hexCode, index, className}) => {
+export const HackTraceCell: React.FC<HackTraceCellProps> = ({ hexCode, highlighted, index, className}) => {
   const state = useContext(HackStateContext);
   const dispatch = useDispatchContext();
 
-  const isHighlighted = useMemo(() => {
-    return state.cells.selected.map(
-      (coords: [number, number]) => getValueFromCoords(state.field, coords)
-    ).includes(hexCode);
-  }, [state.cells.selected])
-
   const fieldHighlightOn = () => {
-    if (state.moves.step <= 0 && !isHighlighted) {
+    if (state.moves.step <= 0) {
       const filtered = state.field.reduce((accum: [number, number][], row: string[], rowIdx: number) => {
           row.forEach((cell, colIdx) => {
             if (cell === hexCode) {
@@ -42,7 +36,7 @@ export const HackTraceCell: React.FC<HackTraceCellProps> = ({ hexCode, index, cl
     <div
       className={classnames(className, styles.root, {
         [styles.disabled]: state.locked,
-        [styles.highlighted]: isHighlighted
+        [styles.highlighted]: highlighted
       })}
       tabIndex={index + 1}
       onMouseEnter={fieldHighlightOn}
