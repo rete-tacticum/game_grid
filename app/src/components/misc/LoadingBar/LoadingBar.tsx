@@ -7,7 +7,7 @@ export const LoadingBar:React.FC<LoadingBarProps> = ({ seconds, color, reverse, 
 
   const animationStyle = {
     backgroundColor: color || 'white',
-    animationDuration: `${seconds}s`,
+    animationDuration: `${seconds + .3}s`,
   }
   
 

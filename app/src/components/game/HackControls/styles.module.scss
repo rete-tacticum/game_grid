@@ -2,36 +2,22 @@
   width: 100%;
   display: flex;
   gap: 2em;
-  border-top: 1px solid rgba(var(--color-white-val), .2);
+  padding: 0 .5rem;
 }
 
 .control {
   text-transform: uppercase;
-  padding: .75em .25rem;
   font-size: 1rem;
   line-height: 1.25rem;
   background-color: unset;
   color: var(--color-white);
-  // border: 1px solid var(--color-white);
   border: 0;
   opacity: .5;
   transition: 200ms;
 
-  &:before {
-    content: "> ";
-  }
-
-  &:after {
-    content: " <";
-  }
-
-  &:before, &:after {
-    visibility: hidden;
-  }
-
   &:hover, &:focus, &:active {
-    text-decoration: dotted;
-    // background-color: rgba(var(--color-white-val), .1);
+    text-decoration: underline;
+    text-underline-offset: .25rem;
     opacity: .9;
     cursor: pointer;
 

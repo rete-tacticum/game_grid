@@ -1,14 +1,9 @@
 .root {
   display: flex;
-  position: relative;
   justify-content: space-between;
-  width: 100%;
-  height: 2.25rem;
-  padding: .5rem;
-  background: rgba(var(--color-main-val), .05);
-  border: 1px dotted rgba(var(--color-main-val), .3);
   letter-spacing: 1px;
   text-transform: uppercase;
+  padding: .5rem;
 }
 
 .loading {
