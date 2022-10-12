@@ -8,30 +8,17 @@ import { ContainGameInfo } from '_components/game/ContainGameInfo/ContainGameInf
 import { ContainField } from '_components/game/ContainField/ContainField';
 import styles from './styles.module.scss';
 import classnames from 'classnames';
-import { LoadingBar } from '_components/misc/LoadingBar/LoadingBar';
 
 
 export function HackPage(): React.ReactElement {
 
   return (
     <HackContainer>
-      <Layout className={styles.root}
-        header={
-          <HackHeader/>
-        }
-        main={
-          <div className={styles.main}>
-            <ContainField className={classnames(styles.dotted, styles.field)}/>
-          </div>
-        }
-        aside={
-          <ContainGameInfo className={styles.backtrace}/>
-        }
-        footer={
-          <div className={styles.footer}>
-            <HackControls/>
-          </div>
-        }
+      <Layout
+        header={<HackHeader/>}
+        main={<ContainField className={classnames(styles.dotted, styles.field)}/>}
+        aside={<ContainGameInfo className={styles.backtrace}/>}
+        footer={<HackControls/>}
         background={<Background/>}
       />
     </HackContainer>

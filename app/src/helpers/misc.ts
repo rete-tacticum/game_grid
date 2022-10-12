@@ -17,9 +17,13 @@ function assertIsNode(e: EventTarget | null): asserts e is Node {
   }
 }
 
+const getValueFromCoords = (field: string[][], [x, y]: [number, number]): string => field[x][y];
+
+
 export {
   assertIsNode,
   randomDecimal,
   getRandomElement,
-  isArrayInArray
+  isArrayInArray,
+  getValueFromCoords
 }
