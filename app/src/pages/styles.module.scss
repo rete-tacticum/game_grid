@@ -1,3 +1,8 @@
+.root {
+  min-width: 768px;
+  max-width: 1024px;
+}
+
 .dotted {
   padding: .5rem;
   border: 1px dotted rgba(var(--color-main-val), .15);

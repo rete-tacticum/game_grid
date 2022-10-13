@@ -9,6 +9,7 @@ const defaultState: HackInitialState = {
   'visible': false,
   'locked': false,
   'result': null,
+  'hackPower': 0,
   'cells': {
     'selected': [],
     'highlighted': [],

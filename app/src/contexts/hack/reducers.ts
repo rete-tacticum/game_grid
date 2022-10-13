@@ -72,6 +72,9 @@ const rootReducer = (state = baseInitialState, action: any): HackInitialState =>
     case actions.BACKTRACE:
       return {...state, solutions: action.payload};
     case actions.END:
+      if (action?.hackPower) {
+        return {...state, result: action.payload, hackPower: action.hackPower};
+      }
       return {...state, result: action.payload};
     case actions.RESET:
       return {...baseInitialState, ...action.payload};

@@ -14,7 +14,7 @@ export function HackPage(): React.ReactElement {
 
   return (
     <HackContainer>
-      <Layout
+      <Layout className={styles.root}
         header={<HackHeader/>}
         main={<ContainField className={classnames(styles.dotted, styles.field)}/>}
         aside={<ContainGameInfo className={styles.backtrace}/>}

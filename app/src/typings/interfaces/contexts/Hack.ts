@@ -31,6 +31,7 @@ interface HackInitialState {
   visible: boolean;
   success?: boolean | null;
   result: GameResult;
+  hackPower: number;
   cells: HackFieldCellsState;
   moves: HackFieldMoveState;
   solutions: Array<string[]>;

@@ -21,8 +21,6 @@ const HackTrace: React.FC<HackTraceProps> = ({trace, className}) => {
     return accum; 
   }, [])
 
-  console.log(intersection)
-
   return (
     <div className={classnames(styles.root, className)}>
     {

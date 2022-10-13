@@ -6,13 +6,14 @@ import { RandomizeText } from '_components/misc/RandomizeText/RandomizeText';
 import { nanoid } from 'nanoid';
 import classnames from 'classnames';
 import styles from './styles.module.scss';
+import { getValueFromCoords } from '_helpers/misc';
 
 
 export const HackTraceSolution: React.FC = ({ className }: BaseComponentProps) => {
   const state = useContext(HackStateContext);
   const hexCode = (idx: number): string => {
     const pos = state.cells.selected[idx];
-    return pos ? state.field[pos[0]][pos[1]] : '--';
+    return pos ? getValueFromCoords(state.field, [...pos]) : '--';
   };
 
   return (

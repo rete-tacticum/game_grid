@@ -28,7 +28,7 @@ export const HackField: React.FC<BaseComponentProps> = ({className}) => {
   }, []);
 
   const handleControls = (e: React.KeyboardEvent) => {
-    dispatch({type: actions.LOCK, payload: true});
+    if (!state.locked) dispatch({type: actions.LOCK, payload: true});
     dispatch({type: actions.MOVE, payload: e.key});
   }
 

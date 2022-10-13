@@ -1,4 +1,4 @@
-import React, {useContext, useMemo} from 'react';
+import React, {useContext, useMemo, useEffect, useState} from 'react';
 import { LoadingBar } from '_components/misc/LoadingBar/LoadingBar';
 import { ShowByState } from '_components/misc/ShowByState/ShowByState';
 import { Timer } from '_components/misc/Timer/Timer';
@@ -14,16 +14,28 @@ export const HackHeader: React.FC = () => {
   const state = useContext(HackStateContext);
 
   const loseGame = () => dispatch({type: actions.END, payload: results.FAIL});
+  const getMessage = (result: string | null) => {
+    switch(result) {
+      case results.FAIL:
+        return 'breach failed, incident will be reported'
+      case results.SUCCESS:
+        return `ICE breached. Exploited ${state.hackPower} attack vectors from possible ${state.solutions.length}`
+      case results.RESET:
+        return 'resetting game'
+      default:
+        return 'breaching'
+    }
+  }
 
   return useMemo(() => (
     <ControlsBar className={styles.root}>
       {state.visible
       ? <ShowByState condition={state.locked} placeholder={'breaching protocol acquired'}>
-          <span>breaching...</span>
-          <Timer className={styles.timer} seconds={state.time} blinkOn={10} onEnd={loseGame}/>
+          {state.result === null && <Timer className={styles.timer} seconds={state.time} blinkOn={10} onEnd={loseGame}/>}
+          <span>{getMessage(state.result)}</span>
           <LoadingBar className={styles.loading} seconds={state.time} reverse={true}/>
         </ShowByState>
       : <span>system mode</span>}
     </ControlsBar>
-  ), [state.locked, state.visible])
+  ), [state.locked, state.visible, state.result])
 }
