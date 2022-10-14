@@ -20,7 +20,7 @@ export const HackContainer: React.FC<hasChild> = ({children}: hasChild): React.R
     }
   }
 
-  // required for resolve initial state inside context provider
+  // required for resolving initial state inside context provider instance
   const getInitial = (): HackInitialState => initState(getParameters());
 
   return (
