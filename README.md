@@ -17,9 +17,9 @@ You are the Netrunner.
 
 - For successfull hacking - any traced sequence (or all of them) should be repeated in **any place** of your backtrace solution buffer. You can start with any symbol (or symbols) if entry point to your sequence is inaccessible
 
-- Remember - the ICE is adaptive and ruthless, you won't have much time. Before breaking you can probe the route by hovering over backtraced cells - it will highlight them in the matrix field. Plan well. At the moment you touch the ICE - you will be on your own
+- Remember - the ICE is adaptive and ruthless, you won't have much time. Before breaking you can probe the ICE by hovering your mouse over traced cells - it will highlight selected hex code on the matrix field. Plan your moves. At the moment you touch the ICE - the hints will be disabled and you'll be on your own
 
-**Burn'em, Cowboy. Break the ICE.**
+**Burn'em, Cowboy!**
 
 ## :controls:
 
