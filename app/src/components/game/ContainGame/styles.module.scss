@@ -1,0 +1,40 @@
+.root {
+  position: relative;
+  width: 100%;
+}
+
+.field {
+  position: relative;
+  display: grid;
+  height: fit-content;
+  width: fit-content;
+  background-color: rgba(var(--color-main-val), .05);
+  z-index: 1;
+}
+
+.backtrace {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.dotted {
+  padding: 1rem;
+  border: 1px dotted rgba(var(--color-main-val), .15);
+}
+
+.blurred {
+  transition: all 300ms ease-in-out;
+  filter: blur(3px) contrast(5%);
+}
+
+@media only screen and (max-width: 900px) {
+  .dotted {
+    padding: .5rem;
+  }
+  .field, .backtrace {
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+}
