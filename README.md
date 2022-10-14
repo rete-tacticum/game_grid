@@ -1,11 +1,41 @@
-### Grid Game: cyberpunk game simulation
+# Grid Game: the ICE breaker
+
+![workflow badge](https://github.com/zerthmonk/gridgame/actions/workflows/pages.yml/badge.svg)\
+<span style="font-size: .75rem">This is tiny hobby project, built as prototype part of [bigger "blackshell" project](https://github.com/skaben/blackshell)</span>
+
+![jones, the cyber dolphin](https://i.imgur.com/3BFZIOc.jpeg)
+<div style="max-width: 240px; margin: 1.75rem auto; padding: .75rem; border: 1px dotted aquamarine; text-align: center;">
+<a style="height: 2rem; background: unset; shadow: unset; border: unset; font-weight: bold; color: aquamarine; letter-spacing: 2px;" href="https://zerthmonk.github.io/gridgame">PLAY GRIDGAME</a>
+</div>
+
+---
+## `:how to play:`
+You are the Netrunner.
+
+- ICE unfolds on your cyberdeck screen as 2D matrix of hex codes. Your high-tier hardware already made the routine part of the work, calculated different attack vectors. You can see it on the right of your screen, marked as "routes traced"
+
+- Navigating the matrix is sometimes tricky. At the first step you can move only in vertical direction. Any select will switch move axis, from vertical to horizontal and so on
+
+- For successfull hacking - any sequence (or all of them) should be repeated in **any place** of your backtrace solution buffer. You can start with any symbol (or symbols) if entry point to your sequence is inaccessible
+
+- Remember - the ICE is adaptive and ruthless, you won't have much time. Before breaking you can probe the route by hovering over backtraced cells - it will highlight them in the matrix field. Plan well. At the moment you touch the ICE - you will be on your own
+
+**Burn'em, Cowboy. Break the ICE.**
+
+## `:controls:`
+
+`W` | `Arrow Up` - move up (only vertical mode)\
+`S` | `Arrow Down` - move down (only vertical mode)\
+`A` | `Arrow Left` - move left (only horizontal mode)\
+`D` | `Arrow Right` - move right (only horizontal mode)\
+`Enter` - select cell (and switch movement mode)\
+`Mouse` - navigate the interface
+
 ---
 
-Симуляция хакинга из Cyberpunk 2077
+## `:setup project for tinkering:`
 
-### how-to
-
-`make start` - запуск дев-сборки\
-`make stop` - полный стоп\
-`make run <cmd>` - запуск `npm run <cmd>` внутри контейнера \
-`make docker-build` - сборка контейнера без кэша
+`make start` - start dev container\
+`make stop` - full stop\
+`make run <cmd>` - run `npm run <cmd>` inside docker container\
+`make docker-build` - build or rebuild container without cache and with volume cleaning
