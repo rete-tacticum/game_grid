@@ -1,13 +1,11 @@
 .root {
-  width: 100%;
   position: relative;
 }
 
 .bar {
-  position: absolute;
   height: 100%;
-  top: 0;
   animation-timing-function: linear;
+  background-color: aquamarine;
 }
 
 .loading {
