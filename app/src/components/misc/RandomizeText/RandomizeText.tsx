@@ -51,7 +51,7 @@ export const RandomizeText = ({
 
   return (
     <div className={className}>
-      <span style={{ wordBreak: "break-all" }}>{state.text}</span>
+      <span style={{ wordBreak: "normal" }}>{state.text}</span>
     </div>
   )
 }

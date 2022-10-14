@@ -7,9 +7,11 @@ import { ControlsBar } from '_components/base/ControlsBar/ControlsBar';
 import actions from '_contexts/hack/actions';
 import { results } from '_interfaces/contexts/constants';
 import styles from './styles.module.scss';
+import classnames from 'classnames';
+import { BaseComponentProps } from '_interfaces/components/base/BaseComponent';
 
 
-export const HackHeader: React.FC = () => {
+export const HackHeader: React.FC<BaseComponentProps> = ({className}) => {
   const dispatch = useDispatchContext();
   const state = useContext(HackStateContext);
 
@@ -28,12 +30,12 @@ export const HackHeader: React.FC = () => {
   }
 
   return useMemo(() => (
-    <ControlsBar className={styles.root}>
+    <ControlsBar className={classnames(styles.root, className)}>
       {state.visible
       ? <ShowByState condition={state.locked} placeholder={'breaching protocol acquired'}>
           {state.result === null && <Timer className={styles.timer} seconds={state.time} blinkOn={10} onEnd={loseGame}/>}
           <span>{getMessage(state.result)}</span>
-          <LoadingBar className={styles.loading} seconds={state.time} reverse={true}/>
+          {state.result === null && <LoadingBar className={styles.loading} seconds={state.time} reverse={true}/>}
         </ShowByState>
       : <span>system mode</span>}
     </ControlsBar>

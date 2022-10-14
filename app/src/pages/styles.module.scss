@@ -3,28 +3,26 @@
   max-width: 1024px;
 }
 
-.dotted {
-  padding: .5rem;
-  border: 1px dotted rgba(var(--color-main-val), .15);
-}
-
-.field {
-  position: relative;
-  display: grid;
-  height: fit-content;
-  width: fit-content;
-  background-color: rgba(var(--color-main-val), .05);
-}
-
-.backtrace {
+.main {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   gap: 2rem;
+  // padding: 1rem;
+  height: 100%;
+  width: 100%;
 }
 
-.footer {
+.denied {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 1rem;
+  overflow-wrap: break-word;
+}
+
+.footer, .header {
+  display: flex;
   gap: 2rem;
+  z-index: 5;
+  padding-left: 1rem;
 }
