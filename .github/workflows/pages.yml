@@ -22,9 +22,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: build app
+      - name: test app
         run: |
           npm ci
+          npm run test
+      - name: build app
+        run: |
           npm run build
       - name: deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
