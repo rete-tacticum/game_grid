@@ -2,7 +2,8 @@ name: gh-pages
 
 on:
   push:
-    branches: [ feat/gh-pages ]
+    branches:
+      - 'release/**'
   workflow_dispatch:
     
 jobs:
