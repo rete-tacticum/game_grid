@@ -1,4 +1,4 @@
-FROM node:16.16.0-alpine AS base
+FROM node:20-alpine AS base
 RUN npm install \
 	npm@latest \
 	typescript \
