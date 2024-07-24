@@ -1,11 +1,9 @@
 # Grid Game: the ICE breaker
 
-![workflow badge](https://github.com/zerthmonk/gridgame/actions/workflows/pages.yml/badge.svg)
-
-This is tiny hobby project, built as prototype part of [bigger "blackshell" project](https://github.com/skaben/blackshell)
+![workflow badge](https://github.com/rete-tacticum/game_grid/actions/workflows/pages.yml/badge.svg)
 
 ![jones, the cyber dolphin](https://i.imgur.com/3BFZIOc.jpeg)
-<a href="https://zerthmonk.github.io/gridgame">$> PLAY GRIDGAME</a>
+<a href="https://rete-tacticum.github.io/game_grid">$> PLAY GRIDGAME</a>
 
 
 ## :how to play:
